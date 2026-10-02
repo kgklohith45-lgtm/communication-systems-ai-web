@@ -1,4 +1,3 @@
-````javascript
 // ============================================================
 // Communication Systems AI - Frontend Only
 // GitHub Pages compatible
@@ -1178,4 +1177,3 @@ questionInput.addEventListener(
 renderHistory();
 
 updateModeUI();
-````
