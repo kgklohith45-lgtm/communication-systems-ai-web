@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Systems AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo">Communication Systems AI</div>
+            <button id="newChatBtn" class="new-chat">+ New Chat</button>
+
+            <div class="history-section">
+                <div class="section-title">
+                    <span>Search History</span>
+                    <button id="clearHistoryBtn">Clear</button>
+                </div>
+                <div id="historyList"></div>
+            </div>
+
+            <div class="tools-section">
+                <div class="section-title">AI Tools</div>
+                <button id="chatgptBtn" class="tool-btn">ChatGPT</button>
+                <button id="geminiBtn" class="tool-btn">Gemini</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="header">
+                <h1>Communication Systems AI</h1>
+                <span id="modeBadge" class="mode-badge">Internet Q&amp;A</span>
+            </header>
+
+            <section class="content">
+                <div class="answer-card">
+                    <div id="answerBox" class="ai-answer">
+                        <h2>Welcome</h2>
+                        <p>Ask a Communication Systems or Computer Networks question.</p>
+                        <p>You can also upload a PDF and ask questions based only on that PDF.</p>
+                    </div>
+                </div>
+
+                <div class="question-area">
+                    <textarea id="questionInput" placeholder="Ask your question..."></textarea>
+
+                    <div class="controls">
+                        <button id="sendBtn" class="send-btn">Send</button>
+                        <button id="internetBtn" class="mode-btn active">Internet Q&amp;A</button>
+                        <button id="uploadPdfBtn" class="mode-btn">Upload PDF</button>
+                        <button id="pdfBtn" class="mode-btn">PDF Q&amp;A</button>
+                    </div>
+
+                    <div id="pdfUploadArea" class="pdf-upload-area" style="display:none;">
+                        <input id="pdfInput" type="file" accept="application/pdf">
+                        <div id="pdfStatus" class="status">No PDF selected.</div>
+                    </div>
+
+                    <div id="status" class="status"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
