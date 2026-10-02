@@ -37,6 +37,16 @@
                 <button id="chatgptBtn" class="tool-btn">ChatGPT</button>
                 <button id="geminiBtn" class="tool-btn">Gemini</button>
             </div>
+
+            <section class="key-section">
+                <div class="section-title">Gemini API key</div>
+                <form id="apiKeyForm" class="key-form">
+                    <input id="apiKeyInput" type="password" autocomplete="off" aria-label="Gemini API key" placeholder="Enter API key">
+                    <button type="submit" class="tool-btn">Save key</button>
+                </form>
+                <button id="clearApiKeyBtn" class="key-clear" type="button">Clear saved key</button>
+                <div id="apiKeyStatus" class="status" aria-live="polite"></div>
+            </section>
         </aside>
 
         <main class="main">

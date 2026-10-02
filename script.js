@@ -30,40 +30,26 @@ const modeBadge = document.getElementById("modeBadge");
 const pdfUploadArea = document.getElementById("pdfUploadArea");
 const pdfInput = document.getElementById("pdfInput");
 const pdfStatus = document.getElementById("pdfStatus");
+const apiKeyForm = document.getElementById("apiKeyForm");
+const apiKeyInput = document.getElementById("apiKeyInput");
+const apiKeyStatus = document.getElementById("apiKeyStatus");
 
 // ============================================================
 // GEMINI API KEY
 // ============================================================
 
 function getGeminiAPIKey() {
-    let apiKey = localStorage.getItem(
+    return localStorage.getItem(
         "communicationGeminiAPIKey"
-    );
+    )?.trim() || null;
+}
 
-    if (apiKey) {
-        return apiKey;
-    }
-
-    apiKey = prompt(
-        "Enter your Gemini API key.\n\n" +
-        "WARNING:\n" +
-        "This GitHub Pages version runs Gemini directly from the browser. " +
-        "Your API key is therefore exposed to the browser/user.\n\n" +
-        "Use a restricted/demo API key."
-    );
-
-    if (!apiKey) {
-        return null;
-    }
-
-    apiKey = apiKey.trim();
-
-    localStorage.setItem(
-        "communicationGeminiAPIKey",
-        apiKey
-    );
-
-    return apiKey;
+function updateGeminiKeyStatus(message) {
+    apiKeyStatus.textContent =
+        message ||
+        (getGeminiAPIKey()
+            ? "Key saved in this browser."
+            : "A Gemini API key is required for answers.");
 }
 
 // ============================================================
@@ -484,7 +470,7 @@ async function callGemini(prompt) {
     if (!apiKey) {
 
         throw new Error(
-            "Gemini API key was not provided."
+            "Save a Gemini API key in the sidebar before asking a question."
         );
     }
 
@@ -856,6 +842,14 @@ async function sendQuestion() {
         return;
     }
 
+    if (!getGeminiAPIKey()) {
+        setStatus(
+            "Save a Gemini API key in the sidebar before sending.",
+            true
+        );
+        return;
+    }
+
     try {
 
         setStatus("");
@@ -1150,6 +1144,37 @@ document
         }
     );
 
+apiKeyForm.addEventListener(
+    "submit",
+    (event) => {
+        event.preventDefault();
+
+        const apiKey = apiKeyInput.value.trim();
+
+        if (!apiKey) {
+            updateGeminiKeyStatus("Enter a Gemini API key first.");
+            return;
+        }
+
+        localStorage.setItem(
+            "communicationGeminiAPIKey",
+            apiKey
+        );
+        apiKeyInput.value = "";
+        updateGeminiKeyStatus("Gemini API key saved in this browser.");
+    }
+);
+
+document
+    .getElementById("clearApiKeyBtn")
+    .addEventListener(
+        "click",
+        () => {
+            localStorage.removeItem("communicationGeminiAPIKey");
+            updateGeminiKeyStatus("Saved Gemini API key cleared.");
+        }
+    );
+
 // ============================================================
 // ENTER KEY
 // ============================================================
@@ -1177,3 +1202,4 @@ questionInput.addEventListener(
 renderHistory();
 
 updateModeUI();
+updateGeminiKeyStatus();

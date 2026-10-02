@@ -12,11 +12,11 @@
 Repository Settings → Pages → Deploy from a branch → `main` → `/ (root)`.
 
 Website:
-https://kgklohith45-lgtm.github.io/communication-systems-ai/
+https://kgklohith45-lgtm.github.io/communication-systems-ai-web/
 
 ## Important
 
-This is a frontend-only demo. The Gemini API key is entered/stored in the browser, so it is not a secure production architecture. Use a restricted/demo API key.
+This is a frontend-only demo. Enter a Gemini API key in the sidebar to generate answers. The key is stored in the browser and is visible to browser users, so use a restricted/demo API key; do not use this approach for production secrets.
 
 Internet search uses the browser-side DuckDuckGo Instant Answer API and may be affected by browser CORS/network restrictions.
 

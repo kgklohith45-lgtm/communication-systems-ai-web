@@ -103,6 +103,43 @@ input {
     display: block;
 }
 
+.key-section {
+    margin-top: 28px;
+}
+
+.key-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#apiKeyInput {
+    width: 100%;
+    min-width: 0;
+    padding: 10px;
+    color: #e5e7eb;
+    background: #0b1220;
+    border: 1px solid #334155;
+    border-radius: 8px;
+}
+
+.key-clear {
+    margin-top: 8px;
+    padding: 0;
+    border: 0;
+    color: #94a3b8;
+    background: transparent;
+    cursor: pointer;
+}
+
+.key-clear:hover {
+    color: #e5e7eb;
+}
+
+.key-section .status {
+    overflow-wrap: anywhere;
+}
+
 .main {
     flex: 1;
     min-width: 0;
